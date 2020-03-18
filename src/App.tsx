@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
+  const doc = document.documentElement
+  useEffect(() => {
+    doc.style.setProperty('--color', 'green');
+  })
+
   return (
     <div className="App">
       <header className="App-header">
