@@ -1,6 +1,7 @@
 @import '../../styles';
 
 .header-component {
+    align-items: center;
     background-color: var(--app-main-color);
     display: flex;
     height: 60px;
@@ -8,4 +9,8 @@
     padding: 8px 20px;
     position: sticky;
     width: 100vw;
+
+    > .input-header {
+        margin-right: 24px;
+    }
 }

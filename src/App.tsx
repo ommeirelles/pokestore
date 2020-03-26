@@ -1,18 +1,31 @@
 import React, { useEffect } from 'react';
+
 import './App.scss';
-
-// import PokemonService from './services/pokemon';
 import { Header } from './components';
+import { PokestoreProvider, usePokestore, PokeStoreActions } from './context';
+import { PokeService } from './services';
 
-function App() {
-    const doc = document.documentElement;
+function AppLayout(): JSX.Element {
+    const [, dispatch] = usePokestore();
+
     useEffect(() => {
-        doc.style.setProperty('--app-main-color', 'blue');
-        // PokemonService.getPokemonList(0, 999).then(console.info);
-        // PokemonService.getTypes().then(t => console.info(t.results.reduce((a, i) => [i.name].concat(a), [])));
-    });
+        PokeService.getTypes().then(({ results: typesPayload }) => {
+            dispatch({
+                type: PokeStoreActions.LOAD_TYPES,
+                payload: typesPayload,
+            });
+        });
+        // const doc = document.documentElement;
+        //     doc.style.setProperty('--app-main-color', 'blue');
+    }, []);
 
     return <Header />;
 }
 
-export default App;
+export default function App(): JSX.Element {
+    return (
+        <PokestoreProvider>
+            <AppLayout />
+        </PokestoreProvider>
+    );
+}

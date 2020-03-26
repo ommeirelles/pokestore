@@ -77,7 +77,7 @@ export interface PokemonI {
     weight: number;
 }
 
-export interface TypeI {
+export interface TypesI {
     results: MapNameURLI[];
 }
 
