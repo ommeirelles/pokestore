@@ -1,0 +1,11 @@
+@import '../../styles';
+
+.header-component {
+    background-color: var(--app-main-color);
+    display: flex;
+    height: 60px;
+    justify-content: flex-start;
+    padding: 8px 20px;
+    position: sticky;
+    width: 100vw;
+}

@@ -1,26 +1,18 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.scss';
+
+// import PokemonService from './services/pokemon';
+import { Header } from './components';
 
 function App() {
     const doc = document.documentElement;
     useEffect(() => {
-        doc.style.setProperty('--color', 'green');
+        doc.style.setProperty('--app-main-color', 'blue');
+        // PokemonService.getPokemonList(0, 999).then(console.info);
+        // PokemonService.getTypes().then(t => console.info(t.results.reduce((a, i) => [i.name].concat(a), [])));
     });
 
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+    return <Header />;
 }
 
 export default App;
