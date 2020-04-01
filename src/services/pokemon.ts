@@ -1,4 +1,4 @@
-import { MapNameURLI } from './types';
+import { MapNameURLI, PokemonI } from './types';
 import { CallPokeAPI, CallerType } from './call';
 
 class PokemonService {
@@ -12,8 +12,26 @@ class PokemonService {
         return this.ApiCaller<{ results: MapNameURLI[] }>(`pokemon?offset=${start}&limit=${limit}`);
     }
 
-    getTypes(): Promise<{ results: MapNameURLI[] }> {
-        return this.ApiCaller<{ results: MapNameURLI[] }>(`type`);
+    getTypes(): Promise<{ [type: string]: MapNameURLI }> {
+        return this.ApiCaller<{ results: MapNameURLI[] }>(`type`).then(({ results }) => {
+            return results.reduce(
+                (a, i) => ({
+                    ...a,
+                    [i.name]: i,
+                }),
+                {},
+            );
+        });
+    }
+
+    getPokemonsFromType(typeId: number): Promise<MapNameURLI[]> {
+        return this.ApiCaller<{ pokemon: { pokemon: MapNameURLI }[] }>(`type/${typeId}`).then(({ pokemon }) => {
+            return pokemon.map(({ pokemon }) => pokemon);
+        });
+    }
+
+    getPokemonData(name: string): Promise<PokemonI> {
+        return this.ApiCaller<PokemonI>(`pokemon/${name}`);
     }
 }
 

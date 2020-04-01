@@ -1,0 +1,14 @@
+.button-component {
+    align-items: center;
+    background-color: var(--app-main-color);
+    border-radius: 5;
+    border: 1px solid var(--app-main-color);
+    color: var(--app-second-color);
+    display: flex;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: center;
+    letter-spacing: -1.2px;
+    cursor: pointer;
+}

@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/_index.scss';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { PokestoreProvider } from './context';
+import { HomePage } from './pages/home';
+
+export default function App(): JSX.Element {
+    return (
+        <PokestoreProvider>
+            <HomePage />
+        </PokestoreProvider>
+    );
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

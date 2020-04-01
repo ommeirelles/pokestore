@@ -75,6 +75,7 @@ export interface PokemonI {
     stats: Stat[];
     types: TypeI[];
     weight: number;
+    price: number;
 }
 
 export interface TypesI {

@@ -1,1 +1,8 @@
-export { usePokestore, PokestoreProvider, PokeStoreActions, getTypes } from './pokemon';
+export {
+    usePokestore,
+    PokestoreProvider,
+    PokeStoreActions,
+    getTypes,
+    setFirstsPokemonsFromType,
+    getPokemons,
+} from './pokemon';

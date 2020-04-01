@@ -6,12 +6,13 @@ interface Props {
     id?: string;
     className?: string;
     icon?: string;
+    placeholder?: string;
 }
-export function Input({ name, id, className, icon }: Props): JSX.Element {
+export function Input({ placeholder, name, id, className, icon }: Props): JSX.Element {
     return (
         <div className={`input-component ${className || ''}`}>
             {icon ? <span className="icon material-icons">{icon}</span> : null}
-            <input className="input" type="text" name={name} id={id} />
+            <input placeholder={placeholder} className="input" type="text" name={name} id={id} />
         </div>
     );
 }
