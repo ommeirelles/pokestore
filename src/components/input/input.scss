@@ -16,11 +16,6 @@
         padding: 12px 0 0 32px;
         text-transform: capitalize;
         width: 100%;
-
-        ::placeholder,
-        ::-moz-placeholder {
-            color: var(--app-second-color);
-        }
     }
 
     > .icon {
@@ -31,4 +26,8 @@
         width: 20px;
         color: var(--app-second-color);
     }
+}
+
+::placeholder {
+    color: var(--app-second-color);
 }

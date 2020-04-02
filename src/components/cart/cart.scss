@@ -1,0 +1,15 @@
+.cart-component {
+    border-left: 2px solid rgba(var(--app-main-color-rgb), 0.7);
+    display: grid;
+    grid-template-rows: auto 40px;
+
+    > .items {
+        grid-row: 1;
+        overflow-y: auto;
+    }
+
+    > .button-component {
+        grid-row: 2;
+        border-radius: 5px 5px 0px 0px;
+    }
+}

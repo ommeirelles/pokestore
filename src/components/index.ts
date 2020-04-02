@@ -3,3 +3,4 @@ export { Input } from './input';
 export { Select } from './select';
 export { Pokemon } from './pokemon';
 export { Loading } from './loading';
+export { Cart } from './cart';

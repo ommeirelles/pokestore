@@ -1,0 +1,29 @@
+.cart-item-component {
+    align-items: center;
+    border: 1px solid var(--app-main-color);
+    display: grid;
+    font-family: 'Open Sans', sans-serif;
+    grid-template-columns: 60px 40px auto;
+    margin: 8px;
+    padding: 4px 8px;
+
+    > img {
+        background-color: rgba(var(--app-main-color-rgb), 0.1);
+        grid-column: 1;
+        height: auto;
+        object-fit: contain;
+        width: 48px;
+    }
+
+    > .qnty {
+        font-size: 12px;
+        font-weight: bold;
+        grid-column: 2;
+    }
+    > .price {
+        font-size: 14px;
+        font-weight: bold;
+        grid-column: 3;
+        justify-self: flex-end;
+    }
+}
