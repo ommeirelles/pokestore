@@ -52,7 +52,7 @@ export function PokestoreReducer(state = {} as PokeStoreI, { type, payload }: Ac
                     return pokes;
                 }
                 //Only insert if type is equal selected type
-                if (i.types.find(i => i.type.name == type)) {
+                if (i.types.find(i => i.type.name === type)) {
                     return [...pokes, i];
                 }
                 return pokes;

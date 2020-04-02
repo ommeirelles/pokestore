@@ -8,9 +8,10 @@ interface PropsI {
     name?: string;
     id?: string;
     onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
+    value: string;
 }
 
-export function Select({ children, className = '', defaultValue, name, id, onChange }: PropsI): JSX.Element {
+export function Select({ value, children, className = '', defaultValue, name, id, onChange }: PropsI): JSX.Element {
     return (
         <select
             defaultValue={defaultValue}
@@ -18,6 +19,7 @@ export function Select({ children, className = '', defaultValue, name, id, onCha
             name={name}
             id={id}
             className={`select-component ${className}`}
+            value={value}
         >
             {defaultValue && <option value={defaultValue}>{defaultValue}</option>}
             {children}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './_home.scss';
-import { Header, Pokemon } from '../../components';
+import { Header, Pokemon, Loading } from '../../components';
 import { usePokestore, PokeStoreActions, getPokemons } from '../../context';
 import { PokeService } from '../../services';
 
@@ -23,7 +23,7 @@ export function HomePage(): JSX.Element {
         <div className="home-page">
             <Header />
             <div className="pokemons">
-                {pokemons && pokemons.length ? pokemons.map(p => <Pokemon key={p.id} pokemon={p} />) : null}
+                {pokemons && pokemons.length ? pokemons.map(p => <Pokemon key={p.id} pokemon={p} />) : <Loading />}
             </div>
         </div>
     );

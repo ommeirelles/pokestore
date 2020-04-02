@@ -17,13 +17,13 @@ export function Header(): JSX.Element {
         if (t && typeObject?.name) {
             setFirstsPokemonsFromType(typeObject)(dispatch);
         }
-    }, [type, dispatch, types]);
+    }, [type]);
 
     useEffect(() => {
         if (!type && types && types.length) {
             setType(types[0].id.toString());
         }
-    }, [pokeState, types, type]);
+    }, [types]);
 
     return (
         <div className="header-component">
@@ -31,9 +31,9 @@ export function Header(): JSX.Element {
             <label className="types-label" htmlFor="types">
                 Tipos:{' '}
             </label>
-            <Select onChange={selectType} name="pokemon types" id="types">
+            <Select value={type} onChange={selectType} name="pokemon types" id="types">
                 {types.map(t => (
-                    <option key={t.name} value={t.id} selected={type === t.id.toString()}>
+                    <option key={t.name} value={t.id}>
                         {t.name}
                     </option>
                 ))}

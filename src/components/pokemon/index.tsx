@@ -9,7 +9,7 @@ interface PropsI {
 export function Pokemon({ pokemon }: PropsI): JSX.Element {
     return (
         <div className="pokemon-item-component">
-            <img src={pokemon.sprites.back_default}></img>
+            <img alt={`pokemon ${pokemon.name}`} src={pokemon.sprites.back_default}></img>
             <div className="info">
                 <strong className="name-label">Nome: </strong>
                 <p className="name">{pokemon.name}</p>

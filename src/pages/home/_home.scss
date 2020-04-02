@@ -1,8 +1,15 @@
 .home-page {
+    display: grid;
+    height: 100%;
     overflow: hidden;
 
     > .pokemons {
         display: flex;
         flex-wrap: wrap;
+        overflow-y: auto;
+
+        > .loading-component {
+            margin: auto;
+        }
     }
 }
