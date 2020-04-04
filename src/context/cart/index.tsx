@@ -1,5 +1,5 @@
 import React, { Dispatch } from 'react';
-import { CartActions, CartStateI, CartReducer } from './reducer';
+import { CartStateI, CartReducer } from './reducer';
 import { PokemonI } from '../../services/types';
 
 export { CartActions, CartReducer } from './reducer';

@@ -23,3 +23,11 @@ export function getTypes({ types }: PokeStoreI): { name: string; id: number }[] 
 export function getPokemons({ pokemons }: PokeStoreI): PokemonI[] {
     return pokemons || [];
 }
+
+export function getPokemonListFromType({ typeSelected, types }: PokeStoreI): string[] {
+    return (typeSelected && types && types[typeSelected] && types[typeSelected].pokemons) || [];
+}
+
+export function getTypeSelected({ typeSelected }: PokeStoreI): string {
+    return typeSelected || '';
+}

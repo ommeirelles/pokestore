@@ -24,8 +24,8 @@ class PokemonService {
         });
     }
 
-    getPokemonsFromType(typeId: number): Promise<MapNameURLI[]> {
-        return this.ApiCaller<{ pokemon: { pokemon: MapNameURLI }[] }>(`type/${typeId}`).then(({ pokemon }) => {
+    getPokemonsFromType(type: string): Promise<MapNameURLI[]> {
+        return this.ApiCaller<{ pokemon: { pokemon: MapNameURLI }[] }>(`type/${type}`).then(({ pokemon = [] }) => {
             return pokemon.map(({ pokemon }) => pokemon);
         });
     }

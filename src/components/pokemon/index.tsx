@@ -16,7 +16,10 @@ export function Pokemon({ pokemon }: PropsI): JSX.Element {
 
     return (
         <div className="pokemon-item-component">
-            <img alt={`pokemon ${pokemon.name}`} src={pokemon.sprites.back_default}></img>
+            <img
+                alt={`pokemon ${pokemon.name}`}
+                src={pokemon?.sprites?.back_default || pokemon?.sprites?.front_default || '#'}
+            ></img>
             <div className="info">
                 <strong className="name-label">Nome: </strong>
                 <p className="name">{pokemon.name}</p>

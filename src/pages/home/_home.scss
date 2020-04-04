@@ -4,6 +4,8 @@
     grid-template-columns: auto 240px;
     position: relative;
     padding-top: 60px;
+    overflow: hidden;
+    position: relative;
 
     > .header-component {
         grid-column: 1/3;
@@ -14,13 +16,25 @@
     }
 
     > .pokemons {
-        grid-row: 2;
-        grid-column: 1;
         display: flex;
         flex-wrap: wrap;
+        grid-column: 1;
+        grid-row: 2;
+        overflow-y: auto;
 
-        > .loading-component {
-            margin: auto;
+        > .loading {
+            display: flex;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            place-content: center;
+            top: 60px;
+            width: 100%;
+            background-color: rgba(var(--app-second-color-rgb), 0.7);
+
+            > .loading-component {
+                margin: auto;
+            }
         }
     }
 

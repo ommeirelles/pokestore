@@ -12,7 +12,7 @@ export function Cart(): JSX.Element {
                     <CartItem key={i} quantity={q.toString()} price={p.price.toString()} img={p.sprites.back_default} />
                 ))}
             </div>
-            <Button text="Finalizar" icon="done_all" />
+            <Button text="Finalizar" icon="done_all" disabled={!(items && Object.keys(items).length > 0) || false} />
         </div>
     );
 }

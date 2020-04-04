@@ -16,12 +16,15 @@ interface TypesI {
 export interface PokeStoreI {
     types?: TypesI;
     pokemons?: PokemonI[];
+    typeSelected?: string;
 }
 
 export enum PokeStoreActions {
     LOAD_TYPES = 'LOAD_TYPES',
     SET_POKEMONS_BY_TYPE = 'SET_POKEMONS_BY_TYPE',
     ADD_POKEMON = 'ADD_POKEMON',
+    CLEAR_POKEMONS = 'CLEAR_POKEMONS',
+    SET_SELECTED_TYPE = 'SET_SELECTED_TYPE',
 }
 
 export function PokestoreReducer(state = {} as PokeStoreI, { type, payload }: ActionI): PokeStoreI {
@@ -45,22 +48,22 @@ export function PokestoreReducer(state = {} as PokeStoreI, { type, payload }: Ac
         }
         case PokeStoreActions.ADD_POKEMON: {
             const { pokemons = [] } = state;
-            const { pokemons: payloadPokemons, type } = payload;
-            const newPokemons = [...pokemons, payloadPokemons].reduce((pokes, i: PokemonI) => {
-                //remove duplicated
-                if (pokes.find((p: PokemonI) => i.id === p.id)) {
-                    return pokes;
+            const pokes = [...pokemons, payload].reduce((result, pokemon) => {
+                if (result.find((i: PokemonI) => i.id === pokemon.id)) {
+                    return result;
                 }
-                //Only insert if type is equal selected type
-                if (i.types.find(i => i.type.name === type)) {
-                    return [...pokes, i];
-                }
-                return pokes;
+                return [...result, pokemon];
             }, []);
             return {
                 ...state,
-                pokemons: newPokemons,
+                pokemons: pokes,
             };
+        }
+        case PokeStoreActions.CLEAR_POKEMONS: {
+            return { ...state, pokemons: [] };
+        }
+        case PokeStoreActions.SET_SELECTED_TYPE: {
+            return { ...state, typeSelected: payload };
         }
         default: {
             return state;
