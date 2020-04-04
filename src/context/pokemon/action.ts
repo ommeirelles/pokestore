@@ -70,6 +70,6 @@ export function getPokemonTypes(dispatch: Dispatch<ActionI>): Promise<void> {
             payload: payload,
         });
 
-        payload && payload.normal && dispatch(setSelectedType(payload.normal.name));
+        payload && payload.fire && dispatch(setSelectedType(payload.fire.name));
     });
 }

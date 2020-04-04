@@ -3,96 +3,98 @@ import { Theme } from './types';
 class Theming {
     private knownTypesThemes: { [key: string]: Theme } = {
         bug: {
-            mainColor: '#ab2',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#aabb22',
+            secondColor: '#000000',
         },
         dark: {
-            mainColor: '#754',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#775544',
+            secondColor: '#FFFFFF',
         },
         dragon: {
-            mainColor: '#76e',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#7766ee',
+            secondColor: '#000000',
         },
         electric: {
-            mainColor: '#fc3',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#ffcc33',
+            secondColor: '#000000',
         },
         fairy: {
-            mainColor: '#e9e',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#ee99ee',
+            secondColor: '#000000',
         },
         fighting: {
-            mainColor: '#b54',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#bb5544',
+            secondColor: '#FFFFFF',
         },
         fire: {
-            mainColor: '#f42',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#ff4422',
+            secondColor: '#000000',
         },
         flying: {
-            mainColor: '#89f',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#8899ff',
+            secondColor: '#000000',
         },
         ghost: {
-            mainColor: '#66b',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#6666bb',
+            secondColor: '#FFFFFF',
         },
         grass: {
-            mainColor: '#7c5',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#77cc55',
+            secondColor: '#000000',
         },
         ground: {
-            mainColor: '#db5',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#ddbb55',
+            secondColor: '#000000',
         },
         ice: {
-            mainColor: '#6cf',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#66ccff',
+            secondColor: '#000000',
         },
         normal: {
-            mainColor: '#aa9',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#aaaa99',
+            secondColor: '#000000',
         },
         poison: {
-            mainColor: '#a59',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#aa5599',
+            secondColor: '#000000',
         },
         psychic: {
-            mainColor: '#f59',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#ff5599',
+            secondColor: '#000000',
         },
         rock: {
-            mainColor: '#ba6',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#bbaa66',
+            secondColor: '#000000',
         },
         steel: {
-            mainColor: '#aab',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#aaaabb',
+            secondColor: '#000000',
         },
         water: {
-            mainColor: '#39f',
-            title: '#000',
-            subTitle: '#444',
+            mainColor: '#3399ff',
+            secondColor: '#000000',
+        },
+        default: {
+            mainColor: '#2f2f2f',
+            secondColor: '#ffffff',
         },
         // unknown: '',
         // shadow: '',
     };
+
+    hexToRgb(hex: string): string {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '';
+    }
+
+    changeThemeVariables(type: string): void {
+        const theme = this.knownTypesThemes[type] || this.knownTypesThemes['default'];
+        const doc = document.documentElement;
+        doc.style.setProperty('--app-main-color', theme.mainColor);
+        doc.style.setProperty('--app-main-color-rgb', this.hexToRgb(theme.mainColor));
+        doc.style.setProperty('--app-second-color-rgb', this.hexToRgb(theme.secondColor));
+        doc.style.setProperty('--app-second-color', theme.secondColor);
+    }
 }
+
+export const service = new Theming();

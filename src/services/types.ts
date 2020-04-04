@@ -84,6 +84,5 @@ export interface TypesI {
 
 export interface Theme {
     mainColor: string;
-    title: string;
-    subTitle: string;
+    secondColor: string;
 }

@@ -1,8 +1,7 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import './header.scss';
 import { Input, Select } from '../';
 import { getTypes, usePokestore, clearPokemons, setSelectedType, getTypeSelected } from '../../context';
-// import { PokeService } from '../../services';
 
 export function Header(): JSX.Element {
     const [pokeState, dispatch] = usePokestore();
@@ -22,7 +21,7 @@ export function Header(): JSX.Element {
             </label>
             <Select value={type} onChange={selectType} name="pokemon types" id="types">
                 {types.map(t => (
-                    <option key={t.name} value={t.id}>
+                    <option key={t.name} value={t.name}>
                         {t.name}
                     </option>
                 ))}

@@ -1,2 +1,2 @@
 export { service as PokeService } from './pokemon';
-// export {} from './theme';
+export { service as ThemeService } from './theme';

@@ -11,6 +11,7 @@ import {
     setFirstsPokemonsFromType,
 } from '../../context';
 import { debounce } from '../../utils';
+import { ThemeService } from '../../services';
 
 export function HomePage(): JSX.Element {
     const [pokemonStore, dispatchToPokeStore] = usePokestore();
@@ -22,8 +23,6 @@ export function HomePage(): JSX.Element {
 
     useEffect(() => {
         getPokemonTypes(dispatchToPokeStore);
-        //const doc = document.documentElement;
-        //doc.style.setProperty('--app-main-color', 'blue');
     }, []);
 
     useLayoutEffect(() => {
@@ -44,6 +43,7 @@ export function HomePage(): JSX.Element {
 
     useEffect(() => {
         if (type) {
+            ThemeService.changeThemeVariables(type);
             setLoadingMore(true);
             setFirstsPokemonsFromType(type)(dispatchToPokeStore).then(() => setLoadingMore(false));
         }
