@@ -1,23 +1,9 @@
 import { PokeStoreI } from './reducer';
 import { PokemonI } from '../../services/types';
 
-export function getTypes({ types }: PokeStoreI): { name: string; id: number }[] {
+export function getTypes({ types }: PokeStoreI): { name: string; pokemons: string[] }[] {
     const keys = Object.entries(types || {});
-    return (
-        keys?.reduce((acumulator: { name: string; id: number }[], [name, i]) => {
-            const items = i.url?.split('/').filter(Boolean);
-            const id = (items && items.length && items.slice(-1)[0]) || '0';
-            if (parseInt(id, 10)) {
-                return acumulator.concat([
-                    {
-                        name,
-                        id: parseInt(id, 10),
-                    },
-                ]);
-            }
-            return acumulator;
-        }, []) || []
-    );
+    return keys?.map(([, { name, pokemons = [] }]) => ({ name, pokemons })) || [];
 }
 
 export function getPokemons({ pokemons }: PokeStoreI): PokemonI[] {
@@ -30,4 +16,8 @@ export function getPokemonListFromType({ typeSelected, types }: PokeStoreI): str
 
 export function getTypeSelected({ typeSelected }: PokeStoreI): string {
     return typeSelected || '';
+}
+
+export function getFindResults({ findResults }: PokeStoreI) {
+    return findResults || [];
 }

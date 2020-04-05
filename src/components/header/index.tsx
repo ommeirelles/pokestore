@@ -1,21 +1,41 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './header.scss';
 import { Input, Select } from '../';
-import { getTypes, usePokestore, clearPokemons, setSelectedType, getTypeSelected } from '../../context';
 
-export function Header(): JSX.Element {
-    const [pokeState, dispatch] = usePokestore();
-    const types = getTypes(pokeState);
-    const type = getTypeSelected(pokeState);
+interface PropsI {
+    onSearchChange?: (search: string) => void;
+    onSelectChange?: (t?: string) => void;
+    types: {
+        name: string;
+        pokemons?: string[];
+    }[];
+    type: string;
+}
+export function Header({ onSearchChange, onSelectChange, types, type }: PropsI): JSX.Element {
+    const [inputValue, setInput] = useState<string>('');
 
     const selectType = (ev: ChangeEvent<HTMLSelectElement>): void => {
-        dispatch(clearPokemons());
-        dispatch(setSelectedType(ev.target?.value));
+        onSelectChange && onSelectChange(ev.target?.value || '');
+        setInput('');
+        onSearchChange && onSearchChange('');
+    };
+
+    const searchInputChange = (ev: ChangeEvent<HTMLInputElement>): void => {
+        onSearchChange && onSearchChange(ev.target?.value);
+        setInput(ev.target?.value);
     };
 
     return (
         <div className="header-component">
-            <Input placeholder="procurar" className="input-header" icon="search" name="search" id="search" />
+            <Input
+                value={inputValue}
+                onChange={searchInputChange}
+                placeholder="procurar"
+                className="input-header"
+                icon="search"
+                name="search"
+                id="search"
+            />
             <label className="types-label" htmlFor="types">
                 Tipos:{' '}
             </label>

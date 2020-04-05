@@ -1,4 +1,6 @@
-export function debounce(func: (...args: any[]) => void, wait: number, immediate = false): () => void {
+export { PokemonList } from './pokemons';
+
+export function debounce(func: (...args: any[]) => void, wait: number, immediate = false): (...args: any[]) => void {
     let timeout: NodeJS.Timeout | undefined;
     return function(...args): void {
         const later = (): void => {

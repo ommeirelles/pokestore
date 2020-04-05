@@ -11,6 +11,8 @@ export {
     getPokemonTypes,
     setSelectedType,
     getTypeSelected,
+    findPokemons,
+    getFindResults,
 } from './pokemon';
 
 export { CartActions, useCartstore, CartProvider, CartReducer, AddPokemonToStoreAction } from './cart';

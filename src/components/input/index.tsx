@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import './input.scss';
 
 interface Props {
@@ -7,12 +7,22 @@ interface Props {
     className?: string;
     icon?: string;
     placeholder?: string;
+    onChange?: (ev: ChangeEvent<HTMLInputElement>) => void;
+    value: string;
 }
-export function Input({ placeholder, name, id, className, icon }: Props): JSX.Element {
+export function Input({ value, placeholder, name, id, className, icon, onChange }: Props): JSX.Element {
     return (
         <div className={`input-component ${className || ''}`}>
             {icon ? <span className="icon material-icons">{icon}</span> : null}
-            <input placeholder={placeholder} className="input" type="text" name={name} id={id} />
+            <input
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+                className="input"
+                type="text"
+                name={name}
+                id={id}
+            />
         </div>
     );
 }

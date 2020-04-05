@@ -3,8 +3,15 @@ import { PokestoreReducer, PokeStoreI, ActionI } from './reducer';
 
 // exports
 export { PokeStoreActions } from './reducer';
-export { getTypes, getPokemons, getPokemonListFromType, getTypeSelected } from './selectors';
-export { setFirstsPokemonsFromType, clearPokemons, loadMorePokemons, getPokemonTypes, setSelectedType } from './action';
+export { getTypes, getPokemons, getPokemonListFromType, getTypeSelected, getFindResults } from './selectors';
+export {
+    setFirstsPokemonsFromType,
+    clearPokemons,
+    loadMorePokemons,
+    getPokemonTypes,
+    setSelectedType,
+    findPokemons,
+} from './action';
 
 type context = [PokeStoreI, Dispatch<ActionI>];
 const PokemonContext = React.createContext<context>((null as unknown) as context);

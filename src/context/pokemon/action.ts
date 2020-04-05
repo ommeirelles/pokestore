@@ -1,6 +1,7 @@
 import { PokeService } from '../../services';
 import { PokeStoreActions, ActionI } from './reducer';
 import { Dispatch } from 'react';
+import { PokemonI } from '../../services/types';
 
 export function setFirstsPokemonsFromType(type: string): (dispatch: Dispatch<ActionI>) => Promise<any> {
     return function(dispatch): Promise<any> {
@@ -72,4 +73,17 @@ export function getPokemonTypes(dispatch: Dispatch<ActionI>): Promise<void> {
 
         payload && payload.fire && dispatch(setSelectedType(payload.fire.name));
     });
+}
+
+export function findPokemons(name: string, PokemonList: string[]): (d: Dispatch<ActionI>) => Promise<PokemonI[]> {
+    return (dispatch: Dispatch<ActionI>): Promise<PokemonI[]> => {
+        const list = PokemonList.filter(i => i.search(new RegExp(name)) >= 0);
+        return Promise.all(list.map(i => PokeService.getPokemonData(i))).then(pokemons => {
+            dispatch({
+                type: PokeStoreActions.SET_FIND_RESULT,
+                payload: pokemons.filter(i => !!i.id).map(i => ({ ...i, price: (Math.random() * 1000).toFixed(2) })),
+            });
+            return pokemons;
+        });
+    };
 }
