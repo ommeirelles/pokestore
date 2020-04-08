@@ -15,4 +15,12 @@ export {
     getFindResults,
 } from './pokemon';
 
-export { CartActions, useCartstore, CartProvider, CartReducer, AddPokemonToStoreAction } from './cart';
+export {
+    CartActions,
+    useCartstore,
+    CartProvider,
+    CartReducer,
+    AddPokemonToStoreAction,
+    RemovePokemonFromStoreAction,
+    getTotalStore,
+} from './cart';

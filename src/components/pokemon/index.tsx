@@ -24,7 +24,7 @@ export function Pokemon({ pokemon }: PropsI): JSX.Element {
                 <strong className="name-label">Nome: </strong>
                 <p className="name">{pokemon.name}</p>
                 <strong className="price-label">Preço: </strong>
-                <p className="price">{pokemon.price}</p>
+                <p className="price">P$ {pokemon.price}</p>
             </div>
             <Button onClick={addItem} text="Adicionar" icon="add" />
         </div>
