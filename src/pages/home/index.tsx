@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, MutableRefObject, useLayoutEffect, useState } from 'react';
 import './_home.scss';
-import { Header, Pokemon, Loading, Cart } from '../../components';
+import { Header, Pokemon, Loading } from '../../components';
 import {
     usePokestore,
     getPokemons,
@@ -63,7 +63,7 @@ export function HomePage(): JSX.Element {
             pokeRef.current.addEventListener('scroll', scrollFn);
             return (): void => pokeRef.current?.removeEventListener('scroll', scrollFn);
         }
-    }, [pokeRef, pokemonsListFromType, pokemons]);
+    }, [pokeRef, pokemonsListFromType, pokemons, isSearching]);
 
     useEffect(() => {
         if (type) {
@@ -79,23 +79,29 @@ export function HomePage(): JSX.Element {
         }
     }, [type]);
 
+    const getPageState = (): JSX.Element[] | JSX.Element => {
+        const notFound = <p className="not-found">Nenhum pokemon encontrado</p>;
+
+        if (isSearching && findResults && findResults.length) {
+            return findResults.map(p => <Pokemon key={p.id} pokemon={p} />);
+        }
+        if (!isSearching && pokemons && pokemons.length) {
+            return pokemons.map(p => <Pokemon key={p.id} pokemon={p} />);
+        }
+        return notFound;
+    };
+
     return (
         <div className="home-page">
             <Header types={types} type={type} onSearchChange={findDispatch} onSelectChange={selectChange} />
             <div className="pokemons" ref={(pokeRef as unknown) as MutableRefObject<HTMLDivElement>}>
-                {!isSearching && pokemons && pokemons.length
-                    ? pokemons.map(p => <Pokemon key={p.id} pokemon={p} />)
-                    : null}
-                {isSearching && findResults && findResults.length
-                    ? findResults.map(p => <Pokemon key={p.id} pokemon={p} />)
-                    : null}
-                {loadingMore ? (
+                {getPageState()}
+                {loadingMore && (
                     <div className="loading">
                         <Loading />
                     </div>
-                ) : null}
+                )}
             </div>
-            <Cart />
         </div>
     );
 }

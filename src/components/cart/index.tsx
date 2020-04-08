@@ -5,7 +5,7 @@ import { Button } from '../button';
 import { CartItem } from '../cart-item';
 import { PokemonI } from '../../services/types';
 
-export function Cart(): JSX.Element {
+export function Cart({ className = '' }: { className?: string }): JSX.Element {
     const [{ items = [] }, dispatch] = useCartstore();
 
     const onDelete = (p: PokemonI) => (): void => {
@@ -13,7 +13,7 @@ export function Cart(): JSX.Element {
     };
 
     return (
-        <div className="cart-component">
+        <div className={`cart-component ${className}`}>
             <div className="items">
                 {Object.entries(items).map(([, { quantity: q, pokemon: p }], i) => (
                     <CartItem

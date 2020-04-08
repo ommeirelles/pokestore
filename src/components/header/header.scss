@@ -3,6 +3,8 @@
 .header-component {
     align-items: center;
     background-color: var(--app-main-color);
+    box-shadow: 0px 1px 4px 0px black;
+    column-gap: 8px;
     display: flex;
     height: 60px;
     justify-content: flex-start;
@@ -11,10 +13,12 @@
     position: sticky;
     top: 0;
     width: 100vw;
-    box-shadow: 0px 1px 9px 0px var(--app-second-color);
+    z-index: 2;
 
     > .input-header {
-        margin-right: 24px;
+        margin-right: 8px;
+        width: unset;
+        flex: 1;
     }
 
     > .types-label {
@@ -23,7 +27,28 @@
         font-size: 14px;
         font-weight: bold;
         letter-spacing: -1px;
-        margin-right: 12px;
+        margin-right: 4px;
         margin-top: 12px;
+    }
+
+    > .cart {
+        border-radius: 50px;
+        height: 40px;
+        display: flex;
+        align-self: flex-start;
+
+        > .material-icons {
+            margin: 0;
+        }
+    }
+
+    @include small() {
+        > .types-label {
+            margin-right: 8px;
+        }
+
+        > .cart {
+            display: none;
+        }
     }
 }

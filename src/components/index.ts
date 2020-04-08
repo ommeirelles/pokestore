@@ -4,3 +4,4 @@ export { Select } from './select';
 export { Pokemon } from './pokemon';
 export { Loading } from './loading';
 export { Cart } from './cart';
+export { Button } from './button';
