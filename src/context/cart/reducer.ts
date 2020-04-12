@@ -12,7 +12,10 @@ export enum CartActions {
     CLEAR = 'CLEAR',
 }
 
-export function CartReducer(state: CartStateI, { type, payload }: { type: string; payload: PokemonI }): CartStateI {
+export function CartReducer(
+    state: CartStateI,
+    { type, payload }: { type: string; payload: PokemonI | undefined },
+): CartStateI {
     switch (type) {
         case CartActions.ADD_ITEM: {
             if (payload) {
@@ -34,7 +37,7 @@ export function CartReducer(state: CartStateI, { type, payload }: { type: string
         case CartActions.REMOVE_POKEMON: {
             const { items: stateItems = {} } = state;
             const items = Object.entries(stateItems).reduce((total, [id, e]) => {
-                if (id === payload.id.toString()) {
+                if (id === payload?.id.toString()) {
                     return total;
                 }
 

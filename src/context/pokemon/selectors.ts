@@ -18,6 +18,6 @@ export function getTypeSelected({ typeSelected }: PokeStoreI): string {
     return typeSelected || '';
 }
 
-export function getFindResults({ findResults }: PokeStoreI) {
+export function getFindResults({ findResults }: PokeStoreI): PokemonI[] {
     return findResults || [];
 }
