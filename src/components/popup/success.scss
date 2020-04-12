@@ -1,0 +1,16 @@
+.success-popup-component {
+    padding: 16px;
+    text-align: center;
+    width: 250px;
+
+    > .material-icons {
+        color: #309a30;
+        display: block;
+        font-size: 64px;
+    }
+
+    > p {
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: -0.8px;
+    }
+}

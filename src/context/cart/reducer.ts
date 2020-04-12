@@ -9,6 +9,7 @@ export interface CartStateI {
 export enum CartActions {
     ADD_ITEM = 'ADD_ITEM',
     REMOVE_POKEMON = 'REMOVE_POKEMON',
+    CLEAR = 'CLEAR',
 }
 
 export function CartReducer(state: CartStateI, { type, payload }: { type: string; payload: PokemonI }): CartStateI {
@@ -40,6 +41,9 @@ export function CartReducer(state: CartStateI, { type, payload }: { type: string
                 return { ...total, [id]: e };
             }, {});
             return { ...state, items };
+        }
+        case CartActions.CLEAR: {
+            return { ...state, items: {} };
         }
         default:
             return state;

@@ -51,7 +51,7 @@ export function Header({ onSearchChange, onSelectChange, types, type }: PropsI):
                 </Select>
                 <Button onClick={(): void => setCartMenu(!cartMenu)} className="cart" icon="shopping_basket" />
             </div>
-            <Cart className={cartMenu ? 'open' : ''} />
+            <Cart checkout={(): void => setCartMenu(false)} className={cartMenu ? 'open' : ''} />
         </>
     );
 }

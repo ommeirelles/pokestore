@@ -23,4 +23,5 @@ export {
     AddPokemonToStoreAction,
     RemovePokemonFromStoreAction,
     getTotalStore,
+    ClearCart,
 } from './cart';

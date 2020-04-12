@@ -8,3 +8,7 @@ export function AddPokemonToStoreAction(pokemon: PokemonI): { type: string; payl
 export function RemovePokemonFromStoreAction(pokemon: PokemonI): { type: string; payload: PokemonI } {
     return { type: CartActions.REMOVE_POKEMON, payload: pokemon };
 }
+
+export function ClearCart(): { type: string; payload: undefined } {
+    return { type: CartActions.CLEAR, payload: undefined };
+}

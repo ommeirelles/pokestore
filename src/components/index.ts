@@ -5,3 +5,4 @@ export { Pokemon } from './pokemon';
 export { Loading } from './loading';
 export { Cart } from './cart';
 export { Button } from './button';
+export { Popup } from './popup';

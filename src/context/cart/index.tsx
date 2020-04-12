@@ -3,9 +3,9 @@ import { CartStateI, CartReducer } from './reducer';
 import { PokemonI } from '../../services/types';
 
 export { CartActions, CartReducer } from './reducer';
-export { AddPokemonToStoreAction, RemovePokemonFromStoreAction } from './actions';
+export { AddPokemonToStoreAction, RemovePokemonFromStoreAction, ClearCart } from './actions';
 
-type context = [CartStateI, Dispatch<{ type: string; payload: PokemonI }>];
+type context = [CartStateI, Dispatch<{ type: string; payload: PokemonI | undefined }>];
 const CartContext = React.createContext<context>((null as unknown) as context);
 
 export function useCartstore(): context {

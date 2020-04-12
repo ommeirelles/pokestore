@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, MutableRefObject, useLayoutEffect, useState } from 'react';
 import './_home.scss';
-import { Header, Pokemon, Loading } from '../../components';
+import { Header, Pokemon, Loading, Popup } from '../../components';
 import {
     usePokestore,
     getPokemons,
@@ -103,16 +103,18 @@ export function HomePage(): JSX.Element {
     };
 
     return (
-        <div className="home-page">
-            <Header types={types} type={type} onSearchChange={findDispatch} onSelectChange={selectChange} />
-            <div className="pokemons" ref={(pokeRef as unknown) as MutableRefObject<HTMLDivElement>}>
-                {getPageState()}
-                {loadingMore && (
-                    <div className="loading">
-                        <Loading />
-                    </div>
-                )}
+        <>
+            <div className="home-page">
+                <Header types={types} type={type} onSearchChange={findDispatch} onSelectChange={selectChange} />
+                <div className="pokemons" ref={(pokeRef as unknown) as MutableRefObject<HTMLDivElement>}>
+                    {getPageState()}
+                    {loadingMore && (
+                        <div className="loading">
+                            <Loading />
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
