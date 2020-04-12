@@ -30,11 +30,22 @@ export function HomePage(): JSX.Element {
     const pokeRef = useRef<HTMLDivElement>();
 
     const scrollFn = debounce((): void => {
-        const { scrollHeight = 0, scrollTop = 0 } = pokeRef.current as HTMLDivElement;
-        if (scrollHeight && scrollTop && scrollHeight - scrollTop <= 400 && !isSearching) {
+        const { scrollHeight = 0, scrollTop = 0, clientHeight = 0 } = pokeRef.current as HTMLDivElement;
+        if (
+            scrollHeight &&
+            clientHeight &&
+            scrollTop &&
+            scrollHeight - (scrollTop + clientHeight) <= 400 &&
+            !isSearching
+        ) {
             const list = pokemonsListFromType.filter(i => !pokemons.map(i => i.name).includes(i)).slice(0, 10) || [];
             setLoadingMore(true);
-            loadMorePokemons(list)(dispatchToPokeStore).then(() => setLoadingMore(false));
+            loadMorePokemons(list)(dispatchToPokeStore)
+                .then(() => setLoadingMore(false))
+                .catch(err => {
+                    setLoadingMore(false);
+                    return err;
+                });
         }
     }, 300);
 
