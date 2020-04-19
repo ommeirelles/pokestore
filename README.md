@@ -1,44 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rodando o projeto:
 
-## Available Scripts
+Dependencias:
 
-In the project directory, you can run:
+1. Ter node na maquina, de preferencia ultima versão estavel.
+2. Ter o gerenciador de pacotes (npm ou yarn) instalado
 
-### `yarn start`
+## Passo a passo:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Fazer download do codigo.
+2. Pelo shell, entrar na pasta do projeto.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+3. `npm install` ou `yarn`
+4. `npm run start`ou `yarn start`
 
-### `yarn test`
+# Considerações
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Essenciais:
 
-### `yarn build`
+-   Catálogo de produtos (Feito)
+-   Carrinho lateral (Feito)
+-   Resumo do carrinho (Feito)
+-   4 lojas com estilos e tipos diferentes de Pokémon (Feito. \*obs: Coloquei um select para navegar entre lojas e comprar em multiplas lojas de uma vez. Nao foi pedido isso porem achei interessante fazer.)
+-   Barra de busca para filtrar os Pokémon (Feito. \*obs. Como a barra pode buscar em todos os pokemons independente do tipo, por conta da funcionalidade anterior que citei no obs, criei uma lista com todos os pokemons existentes pra ganhar performance na hora de busca de todos os pokemons)
+-   Botão de finalizar compra, reiniciando o processo de compra (Feito.)
+-   Modal de obrigado ao finalizar compra (Feito.)
+-   Salvar os dados da compra do usuário localmente para não perdê-las ao atualizar a página (Feito.)
+    Colocá-lo online em alguma url pública para que as pessoas consigam utilizar a loja, afinal como vamos vender Pokémon se não nos acharem? (Feito.)
+-   Uma página com mais detalhes do Pokémon, tendo informações como os tipos, movimentos, pontos fracos e pontos fortes. Dessa forma o usuário poderá navegar para essa página e adicionar o Pokémon no carrinho ou voltar para o catálogo. (To be continue.)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Diferenciais:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   Loja ser acessível para pessoas que utilizaram leitores de tela. (94% cobertura de acordo com lighthouse. Isso me fez ter um problema em celulares da Apple que da zoom na pagina quando um select e ativado. Pois me impede de colcoar user a tag `user-scalable=no`no viewport.)
+-   Testes E2E/UI automatizados parata be garantir que suas funcionalidades estão funcionando corretamente. (Fiz teste unitario apenas, é mais rapido e mais simples de ser feito numa boa arquitetura e traz boas garantias.)
+-   Loja ser um PWA completo com aviso de AHS. (Coloquei o aviso, porem so funciona no android, ha como colocar no iphone, porem necessita de implementação e interação do usuario colocar manualmente o app instalado. preferi nao focar no iphone.)
+-   Ter nota 100 no lighthouse. (tem que ser testado ainda)
+-   Uilizar CI/CD para deploy das lojas.

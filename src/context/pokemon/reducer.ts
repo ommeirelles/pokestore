@@ -37,7 +37,7 @@ export function PokestoreReducer(state = {} as PokeStoreI, { type, payload }: Ac
                 ...state,
                 types: {
                     ...(payload as TypesI),
-                    ['todos']: {
+                    todos: {
                         name: 'todos',
                         url: '',
                         pokemons: PokemonList,

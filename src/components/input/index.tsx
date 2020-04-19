@@ -14,15 +14,12 @@ export function Input({ value, placeholder, name, id, className, icon, onChange 
     return (
         <div className={`input-component ${className || ''}`}>
             {icon ? <span className="icon material-icons">{icon}</span> : null}
-            <input
-                value={value}
-                onChange={onChange}
-                placeholder={placeholder}
-                className="input"
-                type="text"
-                name={name}
-                id={id}
-            />
+            {!value ? (
+                <label className="placeholder" htmlFor={name}>
+                    {placeholder}
+                </label>
+            ) : null}
+            <input value={value} onChange={onChange} className="input" type="text" name={name} id={id} />
         </div>
     );
 }

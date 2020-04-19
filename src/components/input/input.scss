@@ -10,7 +10,7 @@
         border-bottom: 2px solid var(--app-second-color);
         color: var(--app-second-color);
         font-family: 'Roboto Mono', monospace;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         height: 40px;
         letter-spacing: -1px;
@@ -18,6 +18,16 @@
         padding: 12px 0 0 32px;
         text-transform: capitalize;
         width: 100%;
+    }
+
+    > .placeholder {
+        bottom: 8px;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: bold;
+        left: 28px;
+        letter-spacing: -1px;
+        position: absolute;
+        text-transform: capitalize;
     }
 
     > .icon {
@@ -36,6 +46,10 @@
 
         > .icon {
             width: 20px;
+        }
+
+        > .placeholder {
+            font-size: 16px;
         }
     }
 }

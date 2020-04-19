@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, MutableRefObject, useLayoutEffect, useState } from 'react';
 import './_home.scss';
-import { Header, Pokemon, Loading, Popup } from '../../components';
+import { Header, Pokemon, Loading } from '../../components';
 import {
     usePokestore,
     getPokemons,

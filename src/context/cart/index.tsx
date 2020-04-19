@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch, useEffect } from 'react';
 import { CartStateI, CartReducer } from './reducer';
 import { PokemonI } from '../../services/types';
 
@@ -17,8 +17,16 @@ export function useCartstore(): context {
 }
 
 export function CartProvider({ children }: { children: JSX.Element }): JSX.Element {
-    const [state, dispatch] = React.useReducer(CartReducer, {} as CartStateI);
+    let storeInitialState = {};
+    storeInitialState = JSON.parse(localStorage?.getItem('cart') || '{}') || {};
+    const [state, dispatch] = React.useReducer(CartReducer, storeInitialState as CartStateI);
     const value = React.useMemo(() => [state, dispatch], [state]);
+
+    useEffect(() => {
+        if (state) {
+            localStorage?.setItem('cart', JSON.stringify(state));
+        }
+    }, [state]);
 
     return <CartContext.Provider value={(value as unknown) as context}>{children}</CartContext.Provider>;
 }
