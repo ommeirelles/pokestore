@@ -20,7 +20,7 @@
     },
     "scripts": {
         "start": "REACT_APP_POKE_API=https://pokeapi.co/api/v2 react-scripts start",
-        "build": "REACT_APP_POKE_API=https://pokeapi.co/api/v2react-scripts build",
+        "build": "REACT_APP_POKE_API=https://pokeapi.co/api/v2 react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet"
