@@ -25,7 +25,7 @@ Dependencias:
 -   Botão de finalizar compra, reiniciando o processo de compra (Feito.)
 -   Modal de obrigado ao finalizar compra (Feito.)
 -   Salvar os dados da compra do usuário localmente para não perdê-las ao atualizar a página (Feito.)
-    Colocá-lo online em alguma url pública para que as pessoas consigam utilizar a loja, afinal como vamos vender Pokémon se não nos acharem? (Feito.)
+    Colocá-lo online em alguma url pública para que as pessoas consigam utilizar a loja, afinal como vamos vender Pokémon se não nos acharem? (Feito. (https://pokestoreb2w.netlify.app/))
 -   Uma página com mais detalhes do Pokémon, tendo informações como os tipos, movimentos, pontos fracos e pontos fortes. Dessa forma o usuário poderá navegar para essa página e adicionar o Pokémon no carrinho ou voltar para o catálogo. (To be continue.)
 
 ### Diferenciais:
@@ -34,4 +34,4 @@ Dependencias:
 -   Testes E2E/UI automatizados parata be garantir que suas funcionalidades estão funcionando corretamente. (Fiz teste unitario apenas, é mais rapido e mais simples de ser feito numa boa arquitetura e traz boas garantias.)
 -   Loja ser um PWA completo com aviso de AHS. (Coloquei o aviso, porem so funciona no android, ha como colocar no iphone, porem necessita de implementação e interação do usuario colocar manualmente o app instalado. preferi nao focar no iphone.)
 -   Ter nota 100 no lighthouse. (tem que ser testado ainda)
--   Uilizar CI/CD para deploy das lojas.
+-   Uilizar CI/CD para deploy das lojas. (to be continued.)

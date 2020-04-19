@@ -21,7 +21,11 @@ serviceWorker.register();
 
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e: any) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    deferredPrompt && deferredPrompt.prompt && deferredPrompt.prompt();
+    try {
+        e.preventDefault();
+        deferredPrompt = e;
+        deferredPrompt && deferredPrompt.prompt && deferredPrompt.prompt();
+    } catch (e) {
+        console.warn(e);
+    }
 });
